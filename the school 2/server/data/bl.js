@@ -1,4 +1,4 @@
-var dal = require('./dal');
+var dal = require("./dal");
 // var models = require('./models');
 
 
@@ -14,7 +14,7 @@ function getAllFromTable(tableName, callback) {
 
 module.exports.sql = {
     getAllFromTable: getAllFromTable
-}
+};
 
 
 // const customersObjectsArray = [];

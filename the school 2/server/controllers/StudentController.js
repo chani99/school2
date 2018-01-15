@@ -1,5 +1,5 @@
-var bl = require('../data/bl');
-var model = require('../models/models');
+var bl = require("../data/bl");
+var model = require("../models/models");
 
 
 // CRUD
@@ -14,11 +14,11 @@ function read(callback) {
         rows.forEach(function(row) {
             StudentObjectsArray.push(new models.createModel.StudentModel(row));
         });
-        callback(null, custArray);
-    })
+        callback(null, StudentObjectsArray);
+    });
 }
 
 
 module.exports.StudentCtrl = {
     Read: read
-}
+};
