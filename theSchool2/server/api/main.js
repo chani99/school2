@@ -30,13 +30,14 @@ app.get('/', function (req, res) {
 });
 
 // Listen to '/product' in GET Verb methods
-app.get('/student', function (req, res) {
-    ProductsCtrl.Read(function(err, products) {
-        if (err) {
-            res.end('error!');
-        }
-        res.end(JSON.stringify(products));
-    })
+app.get('/login', function (req, res) {
+    // ProductsCtrl.Read(function(err, products) {
+        // if (err) {
+        //     res.end('error!');
+        // }
+        console.log(req);
+        res.end('all good');
+    // })
 });
 
 // Listen to '/product' in POST Verb methods
