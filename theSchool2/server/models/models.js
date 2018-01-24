@@ -7,5 +7,5 @@ function Student(params) {
 }
 
 module.exports.createModel = {
-    Student: StudentModel
+    Student: Student
 }
