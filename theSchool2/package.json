@@ -17,6 +17,8 @@
     "angular-route": "^1.6.8",
     "bootstrap": "^3.3.7",
     "express": "^4.16.2",
+    "express-fileupload": "^0.4.0",
+    "express-session": "^1.15.6",
     "mysql": "^2.15.0",
     "nodejs-model": "^0.1.6",
     "sql": "^0.78.0"
