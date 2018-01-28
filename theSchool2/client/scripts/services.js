@@ -1,6 +1,6 @@
-School.service('LoginService', function($http) {
-this.sendlogin = function(user, onSuccess, onError){
-            $http({
+School.service('schoolServise', function($http) {
+    this.sendlogin = function(user, onSuccess, onError) {
+        $http({
             url: 'http://localhost:8081/login',
             method: 'GET',
             params: {
@@ -8,8 +8,18 @@ this.sendlogin = function(user, onSuccess, onError){
             }
         }).then(onSuccess, onError);
 
-}
+    }
 
+    this.getData = function(tableName, path, onSuccess, onError) {
+        $http({
+            url: 'http://localhost:8081/' + path,
+            method: 'GET',
+            params: {
+                tableName: tableName
+            }
+        }).then(onSuccess, onError);
+
+    }
 
     // this.setNorthwind = function(data, onSuccess, onError) {
     //     $http({

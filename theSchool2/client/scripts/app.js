@@ -4,7 +4,7 @@ var School = angular.module('nodejsApp', ['ngRoute']);
 
 
 
-School.controller("mainScreen", function($scope, LoginService) {
+School.controller("mainScreen", function($scope, $window, schoolServise) {
     $scope.user = {
         name: "",
         password: ""
@@ -13,7 +13,7 @@ School.controller("mainScreen", function($scope, LoginService) {
 
 
     $scope.login = function(user) {
-        LoginService.sendlogin(user, onSucsses, onError);
+        schoolServise.sendlogin(user, onSucsses, onError);
     }
 
     function onError(err) {
@@ -25,6 +25,7 @@ School.controller("mainScreen", function($scope, LoginService) {
         console.log(res);
         $scope.mainbar = false;
         $scope.loginform = true;
+        $window.location.href = "#!/school";
 
     }
 

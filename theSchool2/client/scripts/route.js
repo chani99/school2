@@ -4,7 +4,7 @@ School.config(function($routeProvider) {
             templateUrl: 'home/home.html'
         })
         .when('/school', {
-            templateUrl: 'products/products.view.html'
+            templateUrl: 'school/school.html'
         })
         .when('/shippers', {
             templateUrl: 'administration/shippers.view.html'

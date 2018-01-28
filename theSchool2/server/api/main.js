@@ -34,19 +34,19 @@ app.use(session({
 var sess;
 app.get('/login', function(req, res) {
     let user = JSON.parse(req.query.user);
-    let checkUser = loginCtrl.checkUser(user, function(err, login){
-        if(err){
+    let checkUser = loginCtrl.checkUser(user, function(err, login) {
+        if (err) {
             console.log(err);
-        } else{
-        console.log("login: " +login);
-        sess = req.session;
-        sess['username'] = user.name;
-        sess['role'] = login[0].role_id;
-    
-        res.end(JSON.stringify({login: true, role: login[0].role_id}));
+        } else {
+            console.log("login: " + login);
+            sess = req.session;
+            sess['username'] = user.name;
+            sess['role'] = login[0].role_id;
+
+            res.end(JSON.stringify({ login: true, role: login[0].role_id }));
         }
-    
-    
+
+
     });
 });
 
@@ -66,14 +66,15 @@ app.get('/', function(req, res) {
 
 });
 
-app.get('/', function(req, res) {
-    // ProductsCtrl.Read(function(err, products) {
-    // if (err) {
-    //     res.end('error!');
-    // }
-    console.log(req);
-    res.end('all good');
-    // })
+app.get('/student', function(req, res) {
+    StudentCtrl.StudentCtrl.read(function(err, students) {
+        if (err) {
+            res.end('error!');
+        } else {
+            console.log(students);
+            res.end(JSON.stringify(students));
+        }
+    })
 });
 
 // Listen to '/product' in POST Verb methods
