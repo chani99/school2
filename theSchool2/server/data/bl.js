@@ -11,9 +11,22 @@ function getAllFromTable(tableName, callback) {
     });
 }
 
+//compare user name and password to db
+function findUser(tableName, name, password, callback){
+    dal.executeQuery("SELECT * FROM "+tableName+" WHERE name ='"+name+"'AND password ='"+password+"'", function(err, rows) {
+        if (err) {
+            callback(err);
+        }
+        console.log("be: " + rows);
+        callback(null, rows);
+    });
+    
+}
+
 
 module.exports.sql = {
-    getAllFromTable: getAllFromTable
+    getAllFromTable: getAllFromTable,
+    findUser: findUser
 };
 
 

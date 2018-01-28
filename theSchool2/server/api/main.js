@@ -7,12 +7,19 @@ const path = require('path');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 // app.use(express.static('../../client'));
 app.use(express.static('theSchool2/client'));
 // app.use('/public', express.static('../../client'));
 app.use('/public', express.static('theSchool2/client'));
 // app.use('/node_modules', express.static('../../node_modules'));
 app.use('/node_modules', express.static('theSchool2//node_modules'));
+
+// ctrls
+
+var StudentCtrl = require('../controllers/StudentController.js');
+var loginCtrl = require('../controllers/LoginController.js');
+
 
 
 app.use(fileUpload());
@@ -26,26 +33,26 @@ app.use(session({
 
 var sess;
 app.get('/login', function(req, res) {
-    console.log(session.sessionID);
-    sess = req.sessionID;
-    sess['username'] = req.query.user;
-    console.log(sess);
-
-    res.end(`Hello ${sess.username}`);
-
+    let user = JSON.parse(req.query.user);
+    let checkUser = loginCtrl.checkUser(user, function(err, login){
+        if(err){
+            console.log(err);
+        } else{
+        console.log("login: " +login);
+        sess = req.session;
+        sess['username'] = user.name;
+        sess['role'] = login[0].role_id;
+    
+        res.end(JSON.stringify({login: true, role: login[0].role_id}));
+        }
+    
+    
+    });
 });
 
-// express.use(fileUpload());
-
-// ctrls
-var ProductsCtrl = require('../controllers/StudentController');
 
 
 
-// Express - to serve the client
-// body parser - To handle the data of post
-
-// Listen to '/' in GET Verb methods - serve the main Angular index.html file
 app.get('/', function(req, res) {
 
     // fs.readFile('../../client/index.html', 'utf8', function(err, data) {
