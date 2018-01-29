@@ -19,6 +19,7 @@ app.use('/node_modules', express.static('theSchool2//node_modules'));
 
 var StudentCtrl = require('../controllers/StudentController.js');
 var loginCtrl = require('../controllers/LoginController.js');
+var CourseCtrl = require('../controllers/CourseController.js');
 
 
 
@@ -32,7 +33,7 @@ app.use(session({
 
 
 var sess;
-app.get('/login', function(req, res) {
+app.post('/login', function(req, res) {
     let user = JSON.parse(req.query.user);
     let checkUser = loginCtrl.checkUser(user, function(err, login) {
         if (err) {
@@ -73,6 +74,19 @@ app.get('/student', function(req, res) {
         } else {
             console.log(students);
             res.end(JSON.stringify(students));
+        }
+    })
+});
+
+app.get('/course', function(req, res) {
+    let data = JSON.parse(req.query.params);
+    CourseCtrl.read(data, function(err, courses) {
+
+        if (err) {
+            res.end('error!');
+        } else {
+            console.log(courses);
+            res.end(JSON.stringify(courses));
         }
     })
 });

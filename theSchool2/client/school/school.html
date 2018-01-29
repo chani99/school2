@@ -1,19 +1,19 @@
-<div ng-controller="school">
-    <div class="jumbotron">
-        <h1>
-            STUDENTS
-        </h1>
+<div ng-controller="school" class="main-school-grid">
+
+    <div class="courses">
+        COURSES
     </div>
-    <div>GET STUDENTS</div>
+
+    <div class="students">
+        STUDENTS
+        <div ng-repeat="data in data">
+            <div ng-include="'./school/studentsTemplate.html'"></div>
+        </div>
+    </div>
 
 
-
-    <hr>
-
-    <!-- new product inputs -->
-
-    <!-- <div id="done"></div> -->
-
-    <hr>
+    <div class="mschool">
+        MAIN WINDOW
+    </div>
 
 </div>

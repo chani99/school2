@@ -7,6 +7,7 @@
     <link rel="stylesheet" href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
     <link rel="stylesheet" href='css/app.css'>
     <link rel="stylesheet" href="home/home.css">
+    <link rel="stylesheet" href="school/school.css">
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="public/scripts/app.js"></script>
@@ -40,27 +41,12 @@
             </nav>
         </header>
 
-        <div>
-            <div ng-hide="loginform">
-                <div class="form-signin">
-                    <h2 class="form-signin-heading">Please sign in</h2>
-
-                    <label for="loginame" class="sr-only">User name</label>
-                    <input value=Chani type="name" ng-model="user.name" class="form-control" placeholder="User name" required autofocus>
-
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input value=1234 type="password" ng-model="user.password" class="form-control" placeholder="Password" required>
-
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(user)">Sign in</button><br>
-                    <span calss="error" id="login_error"></span>
-                </div>
-            </div>
 
 
-        </div>
+    </div>
 
 
-        <div ng-view></div>
+    <div ng-view></div>
 
     </div>
 
